@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0026)http://ismatrix.com/cards/ -->
+<!-- <!DOCTYPE html>
 <html lang="en" class="js-focus-visible" data-js-focus-visible="">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -70,7 +69,7 @@
                  <button  onclick='SubForms()' style="margin:1% 30%; height: auto; border-radius: 7px;font-size: 18px; width: 40%;"> start</button>
             </form>	
 			</div>
-      <!-- onclick='SubForm()'  onsubmit="return SubForm()" -->
+    
             </div>
             <div class="logo-container" style="margin: 60px 60px 0px">
 				<img class="trans-bg" src="image/spsclogo.png" width="" height="70" alt="Logo">
@@ -80,3 +79,40 @@
        </div>
 
 </body></html>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Save Web Form Data to Spreadsheets</title>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script>
+		function SubForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/10842/",
+				type:"post",
+				data:$("#myForm").serializeArray(),
+				success: function(){
+					alert("Form Data Submitted :)")
+				},
+				error: function(){
+					alert("There was an error :(")
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<form id="myForm">
+		<label>name</label>
+		<input name="name" />
+		<br/>
+		<label>email</label>
+		<input name="email" />
+		<br/>
+	</form>
+	<button onclick='SubForm()'>Submit</button>
+</body>
+</html>
